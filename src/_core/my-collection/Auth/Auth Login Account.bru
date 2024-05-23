@@ -1,0 +1,29 @@
+meta {
+  name: Auth Login Account
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3007/api/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Roni Christian Puno",
+      "email": "puno.roni4@gmail.com",
+      "password": "Password@123",
+      "budget": "1000",
+      "minArea": "2",
+      "minBathrooms": "2",
+      "minBedrooms": "2",
+      "phone": "09976884123",
+      "commission": "10%",
+      "agencyID": "asdf-123as-asd123-as",
+      "isAgent": true
+  }
+  
+  
+}

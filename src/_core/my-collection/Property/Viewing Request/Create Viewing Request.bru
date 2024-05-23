@@ -1,0 +1,22 @@
+meta {
+  name: Create Viewing Request
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3007/api/property/view/request
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "agentId": "664dabfcf6e0ca95d3466f1e",
+    "clientId": "664da4eaa12adbf494fd4034",
+    "propertyId": "664dad9486c3522a97c51bee",
+    "preferredDate": "05/31/2024",
+    "preferredTime": "10:30 AM",
+    "message": "test message"
+  }
+}
