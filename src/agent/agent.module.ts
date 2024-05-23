@@ -4,7 +4,7 @@ import { AgentController } from './agent.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { AgentSchema } from './schema/Agent.schema';
-import { ViewingRequestSchema } from 'src/property/schema/ViewingRequest.schema';
+import { ViewingRequestSchema } from 'src/property/schemas/ViewingRequest.schema';
 
 @Module({
   imports: [

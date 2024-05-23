@@ -4,9 +4,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PropertyService } from './property.service';
 import { PropertyController } from './property.controller';
 
-import { PropertySchema } from './schema/Property.schema';
-import { ViewingRequestSchema } from './schema/ViewingRequest.schema';
-import { ClientSchema } from 'src/client/Schema/Client.schema';
+import { PropertySchema } from './schemas/Property.schema';
+import { ViewingRequestSchema } from './schemas/ViewingRequest.schema';
+import { ClientSchema } from 'src/client/schemas/Client.schema';
 
 @Module({
   imports: [

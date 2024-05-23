@@ -1,19 +1,15 @@
 import { Model } from 'mongoose';
-import {
-  BadRequestException,
-  Injectable,
-  NotAcceptableException,
-} from '@nestjs/common';
+import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
-
-import { PropertyDocument } from './schema/Property.schema';
-import { ViewingRequestDocument } from './schema/ViewingRequest.schema';
 import { CreateViewRequestDto } from './dto/view-request.dto';
-import { ClientDocument } from 'src/client/Schema/Client.schema';
 import { ViewingRequestComment } from './dto/view-request-comment.dto';
+
+import { PropertyDocument } from './schemas/Property.schema';
+import { ClientDocument } from 'src/client/schemas/Client.schema';
+import { ViewingRequestDocument } from './schemas/ViewingRequest.schema';
 
 @Injectable()
 export class PropertyService {

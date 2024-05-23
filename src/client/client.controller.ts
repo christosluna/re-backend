@@ -8,7 +8,9 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
+
 import { ClientService } from './client.service';
+
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 

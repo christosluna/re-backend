@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 import { Document } from 'mongoose';
 import { Property } from './Property.schema';
-import { Client } from 'src/client/Schema/Client.schema';
+import { Client } from 'src/client/schemas/Client.schema';
 
 export type ViewingRequestDocument = ViewingRequest & Document;
 
