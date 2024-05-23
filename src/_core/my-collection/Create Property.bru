@@ -1,0 +1,25 @@
+meta {
+  name: Create Property
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3007/api/property
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "agentID": "664dabfcf6e0ca95d3466f1e",
+    "price": "15000",
+    "bedrooms": "2",
+    "bathrooms": "2",
+    "area": "uptown",
+    "city": "cagayan de oro",
+    "address": "upper balulang cdo",
+    "propertyType": "for sale",
+    "description": "house for sale"
+  }
+}
