@@ -51,11 +51,16 @@ export class ClientService {
   }
 
   async viewMyRequests(payload: ViewMyRequestDto) {
+    let result;
     const { clientId } = payload;
 
-    const result = await this.viewingRequestModel
-      .find({ 'client._id': clientId })
-      .exec();
+    if (clientId) {
+      result = await this.viewingRequestModel
+        .find({ 'client._id': clientId })
+        .exec();
+    } else {
+      result = await this.viewingRequestModel.find();
+    }
 
     return result;
   }

@@ -3,5 +3,6 @@ export class CreateViewRequestDto {
   propertyId: string;
   preferredDate: string;
   preferredTime: string;
+  message: string;
   agentId: string;
 }

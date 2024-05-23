@@ -26,6 +26,9 @@ export class ViewingRequest {
   preferredTime: string;
 
   @Prop({ required: true })
+  message: [];
+
+  @Prop({ required: true })
   status: string;
 }
 

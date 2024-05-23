@@ -12,6 +12,7 @@ import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 import { CreateViewRequestDto } from './dto/view-request.dto';
+import { ViewingRequestComment } from './dto/view-request-comment.dto';
 
 @Controller('property')
 export class PropertyController {
@@ -48,6 +49,11 @@ export class PropertyController {
   @Post('view/request')
   requestPropertyViewing(@Body() createViewRequestDto: CreateViewRequestDto) {
     return this.propertyService.requestPropertyViewing(createViewRequestDto);
+  }
+
+  @Post('message/request')
+  messageViewingRequest(@Body() viewingRequestComment: ViewingRequestComment) {
+    return this.propertyService.messageViewingRequest(viewingRequestComment);
   }
 
   // @Post('create/feature')

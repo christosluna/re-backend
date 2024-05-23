@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
@@ -40,8 +41,8 @@ export class ClientController {
     return this.clientService.remove(+id);
   }
 
-  @Get('me/requests/:id')
-  viewMyRequests(@Param('id') clientId: string) {
+  @Get('me/requests')
+  viewMyRequests(@Query('id') clientId: string) {
     return this.clientService.viewMyRequests({ clientId });
   }
 }
