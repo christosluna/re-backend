@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: http://localhost:3007/api/property/message/request
+  url: http://localhost:3007/api/agent/message/request
   body: json
   auth: none
+}
+
+headers {
+  Authorization: Bearer {{agent-token}}
 }
 
 body:json {
@@ -15,7 +19,7 @@ body:json {
     "agentId": "664dabfcf6e0ca95d3466f1e",
     "clientId": "664da4eaa12adbf494fd4034",
     "propertyId": "664dad9486c3522a97c51bee",
-    "message": "05/31/2024",
+    "message": "waw",
     "userType": "client"
   }
 }

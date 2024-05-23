@@ -10,6 +10,10 @@ post {
   auth: none
 }
 
+headers {
+  Authorization: Bearer {{client-token}}
+}
+
 body:json {
   {
     "agentID": "664dabfcf6e0ca95d3466f1e",

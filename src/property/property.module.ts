@@ -7,6 +7,7 @@ import { PropertyController } from './property.controller';
 import { PropertySchema } from './schemas/Property.schema';
 import { ViewingRequestSchema } from './schemas/ViewingRequest.schema';
 import { ClientSchema } from 'src/client/schemas/Client.schema';
+import { JwtStrategy } from 'src/_core/guard/jwt.strategy';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { ClientSchema } from 'src/client/schemas/Client.schema';
     ]),
   ],
   controllers: [PropertyController],
-  providers: [PropertyService],
+  providers: [PropertyService, JwtStrategy],
   exports: [PropertyService],
 })
 export class PropertyModule {}

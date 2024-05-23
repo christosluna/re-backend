@@ -1,5 +1,5 @@
 meta {
-  name: Get me viewing requests
+  name: Get Me Request
   type: http
   seq: 1
 }
@@ -12,4 +12,8 @@ get {
 
 query {
   ~clientId: 664da4eaa12adbf494fd4034
+}
+
+headers {
+  Authorization: Bearer {{client-token}}
 }

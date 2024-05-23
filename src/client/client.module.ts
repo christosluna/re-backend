@@ -7,6 +7,7 @@ import { ClientService } from './client.service';
 
 import { ClientSchema } from './schemas/Client.schema';
 import { ViewingRequestSchema } from 'src/property/schemas/ViewingRequest.schema';
+import { PropertyModule } from 'src/property/property.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ViewingRequestSchema } from 'src/property/schemas/ViewingRequest.schema
       { name: 'Client', schema: ClientSchema },
       { name: 'ViewingRequest', schema: ViewingRequestSchema },
     ]),
+    PropertyModule,
   ],
   controllers: [ClientController],
   providers: [ClientService],

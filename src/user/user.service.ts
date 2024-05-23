@@ -12,7 +12,12 @@ export class UserService {
   ) {}
 
   _getUserDetails(user: UserDocument): UserDetails {
-    return { id: user.id, name: user.name, email: user.email };
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      type: user.isAgent == false ? 'client' : 'agent',
+    };
   }
 
   async findByEmail(email: string): Promise<UserDocument | null> {

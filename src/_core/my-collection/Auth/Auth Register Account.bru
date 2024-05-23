@@ -10,6 +10,10 @@ post {
   auth: none
 }
 
+headers {
+  Authorization: Bearer {{client-token}}
+}
+
 body:json {
   {
       "name": "Roni Christian Puno",

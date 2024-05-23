@@ -6,13 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
-import { CreateViewRequestDto } from './dto/view-request.dto';
-import { ViewingRequestComment } from './dto/view-request-comment.dto';
+import { JwtAuthGuard } from 'src/_core/guard/auth-jwt.guard';
 
 @Controller('property')
 export class PropertyController {
@@ -24,11 +24,13 @@ export class PropertyController {
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   findAll() {
     return this.propertyService.findAll();
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
     return this.propertyService.findOne(id);
   }
@@ -44,16 +46,6 @@ export class PropertyController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.propertyService.remove(id);
-  }
-
-  @Post('view/request')
-  requestPropertyViewing(@Body() createViewRequestDto: CreateViewRequestDto) {
-    return this.propertyService.requestPropertyViewing(createViewRequestDto);
-  }
-
-  @Post('message/request')
-  messageViewingRequest(@Body() viewingRequestComment: ViewingRequestComment) {
-    return this.propertyService.messageViewingRequest(viewingRequestComment);
   }
 
   // @Post('create/feature')

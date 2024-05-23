@@ -90,6 +90,7 @@ export class AuthService {
   async login(existingUser: ExistingUserDTO): Promise<any> {
     const { email, password } = existingUser;
     const user = await this.validateUser(email, password);
+    console.log('asd', user);
 
     if (!user) throw new UnauthorizedException();
 

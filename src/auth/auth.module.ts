@@ -3,7 +3,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UserModule } from 'src/user/user.module';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from './guard/jwt.strategy';
+import { JwtStrategy } from '../_core/guard/jwt.strategy';
 import { ClientModule } from 'src/client/client.module';
 import { AgentModule } from 'src/agent/agent.module';
 
