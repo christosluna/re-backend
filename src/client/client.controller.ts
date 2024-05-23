@@ -39,4 +39,9 @@ export class ClientController {
   remove(@Param('id') id: string) {
     return this.clientService.remove(+id);
   }
+
+  @Get('me/requests/:id')
+  viewMyRequests(@Param('id') clientId: string) {
+    return this.clientService.viewMyRequests({ clientId });
+  }
 }

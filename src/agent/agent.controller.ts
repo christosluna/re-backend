@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { AgentService } from './agent.service';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
@@ -30,5 +38,10 @@ export class AgentController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.agentService.remove(+id);
+  }
+
+  @Get('view/requests/:id')
+  getViewRequests(@Param('id') agentId: string) {
+    return this.agentService.viewRequests({ agentId });
   }
 }

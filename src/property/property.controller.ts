@@ -11,6 +11,7 @@ import {
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { CreateViewRequestDto } from './dto/view-request.dto';
 
 @Controller('property')
 export class PropertyController {
@@ -42,6 +43,11 @@ export class PropertyController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.propertyService.remove(id);
+  }
+
+  @Post('view/request')
+  requestPropertyViewing(@Body() createViewRequestDto: CreateViewRequestDto) {
+    return this.propertyService.requestPropertyViewing(createViewRequestDto);
   }
 
   // @Post('create/feature')

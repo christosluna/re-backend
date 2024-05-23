@@ -4,11 +4,15 @@ import { UpdateAgentDto } from './dto/update-agent.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AgentDocument } from './schema/Agent.schema';
+import { ViewRequestDto } from './dto/view-requests.dto';
+import { ViewingRequestDocument } from 'src/property/schema/ViewingRequest.schema';
 
 @Injectable()
 export class AgentService {
   constructor(
     @InjectModel('Agent') private readonly agentModel: Model<AgentDocument>,
+    @InjectModel('ViewingRequest')
+    private readonly viewRequestModel: Model<ViewingRequestDocument>,
   ) {}
 
   create(createAgentDto: CreateAgentDto) {
@@ -39,5 +43,15 @@ export class AgentService {
 
   remove(id: number) {
     return `This action removes a #${id} agent`;
+  }
+
+  viewRequests(viewRequestDto: ViewRequestDto) {
+    const { agentId } = viewRequestDto;
+
+    const viewRequests = this.viewRequestModel.find({
+      agentId: agentId,
+    });
+
+    return viewRequests;
   }
 }

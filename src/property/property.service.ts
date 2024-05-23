@@ -6,12 +6,19 @@ import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 
 import { PropertyDocument } from './schema/Property.schema';
+import { ViewingRequestDocument } from './schema/ViewingRequest.schema';
+import { CreateViewRequestDto } from './dto/view-request.dto';
+import { ClientDocument } from 'src/client/Schema/Client.schema';
 
 @Injectable()
 export class PropertyService {
   constructor(
     @InjectModel('Property')
     private readonly propertyModel: Model<PropertyDocument>,
+    @InjectModel('ViewingRequest')
+    private readonly viewRequestModel: Model<ViewingRequestDocument>,
+    @InjectModel('Client')
+    private readonly clientModel: Model<ClientDocument>,
   ) {}
 
   create(payload: CreatePropertyDto) {
@@ -61,4 +68,23 @@ export class PropertyService {
   }
 
   async createFeature() {}
+
+  async requestPropertyViewing(payload: CreateViewRequestDto) {
+    const { agentId, clientId, preferredDate, preferredTime, propertyId } =
+      payload;
+
+    const property = await this.propertyModel.findById({ _id: propertyId });
+    const client = await this.clientModel.findById({ _id: clientId });
+
+    const newViewRequest = new this.viewRequestModel({
+      agentId,
+      client,
+      property,
+      preferredDate,
+      preferredTime,
+      status: 'PENDING',
+    });
+
+    return newViewRequest.save();
+  }
 }
