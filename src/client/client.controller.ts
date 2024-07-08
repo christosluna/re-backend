@@ -14,10 +14,9 @@ import { ClientService } from './client.service';
 
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
-import { JwtAuthGuard } from 'src/_core/guard/auth-jwt.guard';
-import { ViewingRequestComment } from 'src/property/dto/view-request-comment.dto';
-import { PropertyService } from 'src/property/property.service';
-import { CreateViewRequestDto } from 'src/property/dto/view-request.dto';
+import { PropertyService } from '../property/property.service';
+import { JwtAuthGuard } from '../_core/guard/auth-jwt.guard';
+import { CreateViewRequestDto } from '../property/dto/view-request.dto';
 
 @Controller('client')
 export class ClientController {
