@@ -12,7 +12,7 @@ import {
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
-import { JwtAuthGuard } from '../_core/guard/auth-jwt.guard';
+import { JwtAuthGuard } from 'src/_core/guard/auth-jwt.guard';
 
 @Controller('property')
 export class PropertyController {
