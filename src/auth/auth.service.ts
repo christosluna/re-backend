@@ -1,12 +1,12 @@
 import * as bcrypt from 'bcrypt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UserService } from 'src/user/user.service';
+import { UserService } from '../user/user.service';
 
-import { NewUserDTO } from 'src/user/dto/new-user.dto';
-import { ExistingUserDTO } from 'src/user/dto/existing-user.dto';
+import { NewUserDTO } from '../user/dto/new-user.dto';
+import { ExistingUserDTO } from '../user/dto/existing-user.dto';
 import { JwtService } from '@nestjs/jwt';
-import { ClientService } from 'src/client/client.service';
-import { AgentService } from 'src/agent/agent.service';
+import { ClientService } from '../client/client.service';
+import { AgentService } from '../agent/agent.service';
 
 @Injectable()
 export class AuthService {

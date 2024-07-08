@@ -6,8 +6,8 @@ import { ClientController } from './client.controller';
 import { ClientService } from './client.service';
 
 import { ClientSchema } from './schemas/Client.schema';
-import { ViewingRequestSchema } from 'src/property/schemas/ViewingRequest.schema';
-import { PropertyModule } from 'src/property/property.module';
+import { ViewingRequestSchema } from '../property/schemas/ViewingRequest.schema';
+import { PropertyModule } from '../property/property.module';
 
 @Module({
   imports: [

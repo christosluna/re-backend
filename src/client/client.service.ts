@@ -7,7 +7,7 @@ import { UpdateClientDto } from './dto/update-client.dto';
 import { ViewMyRequestDto } from './dto/view-my-request.dto';
 
 import { ClientDocument } from './schemas/Client.schema';
-import { ViewingRequestDocument } from 'src/property/schemas/ViewingRequest.schema';
+import { ViewingRequestDocument } from '../property/schemas/ViewingRequest.schema';
 
 @Injectable()
 export class ClientService {

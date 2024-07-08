@@ -11,11 +11,11 @@ import {
 import { AgentService } from './agent.service';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
-import { JwtAuthGuard } from 'src/_core/guard/auth-jwt.guard';
-import { PropertyService } from 'src/property/property.service';
-import { CreateViewRequestDto } from 'src/property/dto/view-request.dto';
-import { RolesGuard } from 'src/_core/guard/roles.guard';
-import { ViewingRequestComment } from 'src/property/dto/view-request-comment.dto';
+import { JwtAuthGuard } from '../_core/guard/auth-jwt.guard';
+import { PropertyService } from '../property/property.service';
+import { CreateViewRequestDto } from '../property/dto/view-request.dto';
+import { RolesGuard } from '../_core/guard/roles.guard';
+import { ViewingRequestComment } from '../property/dto/view-request-comment.dto';
 
 @Controller('agent')
 export class AgentController {

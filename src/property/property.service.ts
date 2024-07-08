@@ -8,7 +8,7 @@ import { CreateViewRequestDto } from './dto/view-request.dto';
 import { ViewingRequestComment } from './dto/view-request-comment.dto';
 
 import { PropertyDocument } from './schemas/Property.schema';
-import { ClientDocument } from 'src/client/schemas/Client.schema';
+import { ClientDocument } from '../client/schemas/Client.schema';
 import { ViewingRequestDocument } from './schemas/ViewingRequest.schema';
 
 @Injectable()

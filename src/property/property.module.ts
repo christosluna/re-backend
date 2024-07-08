@@ -6,8 +6,8 @@ import { PropertyController } from './property.controller';
 
 import { PropertySchema } from './schemas/Property.schema';
 import { ViewingRequestSchema } from './schemas/ViewingRequest.schema';
-import { ClientSchema } from 'src/client/schemas/Client.schema';
-import { JwtStrategy } from 'src/_core/guard/jwt.strategy';
+import { ClientSchema } from '../client/schemas/Client.schema';
+import { JwtStrategy } from '../_core/guard/jwt.strategy';
 
 @Module({
   imports: [

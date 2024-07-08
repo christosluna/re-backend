@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AgentDocument } from './schema/Agent.schema';
 import { ViewRequestDto } from './dto/view-requests.dto';
-import { ViewingRequestDocument } from 'src/property/schemas/ViewingRequest.schema';
+import { ViewingRequestDocument } from '../property/schemas/ViewingRequest.schema';
 
 @Injectable()
 export class AgentService {

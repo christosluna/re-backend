@@ -5,7 +5,7 @@ import { UserSchema } from './schemas/User.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from 'src/_core/guard/jwt.strategy';
+import { JwtStrategy } from '../_core/guard/jwt.strategy';
 
 @Module({
   imports: [
