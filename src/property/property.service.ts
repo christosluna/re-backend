@@ -10,6 +10,9 @@ import { ViewingRequestComment } from './dto/view-request-comment.dto';
 import { PropertyDocument } from './schemas/Property.schema';
 import { ClientDocument } from '../client/schemas/Client.schema';
 import { ViewingRequestDocument } from './schemas/ViewingRequest.schema';
+import { ImageDocument } from './schemas/Image.schema';
+
+import { diskStorage } from 'multer';
 
 @Injectable()
 export class PropertyService {
@@ -20,9 +23,11 @@ export class PropertyService {
     private readonly viewingRequestModel: Model<ViewingRequestDocument>,
     @InjectModel('Client')
     private readonly clientModel: Model<ClientDocument>,
+    @InjectModel('Image')
+    private readonly imageModel: Model<ImageDocument>,
   ) {}
 
-  create(payload: CreatePropertyDto) {
+  createProperty(payload: CreatePropertyDto, filePath?: any) {
     const {
       address,
       agentID,
@@ -47,7 +52,24 @@ export class PropertyService {
       description,
     });
 
-    return newProperty.save();
+    newProperty.save();
+
+    console.log('filePath', filePath);
+    const propertyImage = new this.imageModel({
+      propertyID: newProperty.id,
+      path: filePath,
+    });
+
+    propertyImage.save();
+
+    return newProperty;
+  }
+
+  uplodadImage(propertyID, filePath) {
+    new this.imageModel({
+      propertyID: propertyID,
+      path: filePath,
+    }).save();
   }
 
   findAll() {
