@@ -18,7 +18,9 @@ import { JwtAuthGuard } from '../_core/guard/auth-jwt.guard';
 import { ViewingRequestComment } from '../property/dto/view-request-comment.dto';
 import { PropertyService } from '../property/property.service';
 import { CreateViewRequestDto } from '../property/dto/view-request.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Client')
 @Controller('client')
 export class ClientController {
   constructor(

@@ -16,7 +16,9 @@ import { PropertyService } from '../property/property.service';
 import { CreateViewRequestDto } from '../property/dto/view-request.dto';
 import { RolesGuard } from '../_core/guard/roles.guard';
 import { ViewingRequestComment } from '../property/dto/view-request-comment.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Agent')
 @Controller('agent')
 export class AgentController {
   constructor(
