@@ -11,21 +11,29 @@ import {
   UseInterceptors,
   HttpStatus,
   Res,
+  UploadedFiles,
 } from '@nestjs/common';
 import * as path from 'path';
 import { diskStorage } from 'multer';
 import { ApiTags } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 import { JwtAuthGuard } from '../_core/guard/auth-jwt.guard';
 
+import { Queue } from 'bullmq';
+import { InjectQueue } from '@nestjs/bullmq';
+import { TRANSCODE_QUEUE } from './constants/constants';
+
 @ApiTags('Property')
 @Controller('property')
 export class PropertyController {
-  constructor(private readonly propertyService: PropertyService) {}
+  constructor(
+    private readonly propertyService: PropertyService,
+    @InjectQueue(TRANSCODE_QUEUE) private transcodeQueue: Queue,
+  ) {}
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -59,7 +67,7 @@ export class PropertyController {
 
   @Post('upload/:id')
   @UseInterceptors(
-    FileInterceptor('file', {
+    FilesInterceptor('files', 3, {
       storage: diskStorage({
         destination: './src/_core/assets/Images',
         filename: (req, file, callBack) => {
@@ -71,19 +79,29 @@ export class PropertyController {
       }),
     }),
   )
-  uplodadImage(
-    @UploadedFile()
-    file: Express.Multer.File,
-    @Body() { propertyID },
-    @Res() res,
+  async uploadImage(
+    @UploadedFiles() files: Array<Express.Multer.File>,
+    @Param('id')
+    propertyID: string,
   ) {
-    console.log('propertyID', propertyID);
-    return res;
-    const filePath = res.status(HttpStatus.OK).json({
-      success: true,
-      data: file.path,
-    });
-    return this.propertyService.uplodadImage(propertyID, filePath);
+    for (const file of files) {
+      await this.transcodeQueue.add(
+        TRANSCODE_QUEUE,
+        {
+          buffer: file.buffer,
+          originalName: file.originalname,
+          type: file.mimetype,
+        },
+        { delay: 3000 },
+      );
+
+      await this.propertyService.uploadImage(propertyID, file.path);
+    }
+
+    return {
+      message: 'File Uploaded Successfully',
+      status: 200,
+    };
   }
 
   @Get()

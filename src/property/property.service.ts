@@ -65,7 +65,7 @@ export class PropertyService {
     return newProperty;
   }
 
-  uplodadImage(propertyID, filePath) {
+  uploadImage(propertyID, filePath) {
     new this.imageModel({
       propertyID: propertyID,
       path: filePath,
